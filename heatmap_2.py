@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import os
 
 # ── 1. Load & clean ──────────────────────────────────────────────────────────
-CSV_PATH = os.path.join("output", "06_arrivals_by_country_annual.csv")
-OUT_PATH = os.path.join("output", "heatmap_visitor_profile_2025.png")
+CSV_PATH = os.path.join("output", "10_arrivals_by_country_december.csv")
+OUT_PATH = os.path.join("output", "heatmap_visitor_profile_december_2025.png")
 
 df = pd.read_csv(CSV_PATH)
 
@@ -96,7 +96,7 @@ df_norm = df_pct.apply(
     lambda c: (c - c.min()) / (c.max() - c.min()) if c.max() != c.min() else pd.Series(0.5, index=c.index)
 )
 #save df_norm to csv for debugging
-df_pct.to_csv(os.path.join("output", "heatmap_normalized_values_annual.csv"))
+df_pct.to_csv(os.path.join("output", "heatmap_normalized_values_december.csv"))
 # ── 5. Build heatmap ──────────────────────────────────────────────────────────
 n_countries = len(df_pct)
 fig_height = max(12, n_countries * 0.22)
